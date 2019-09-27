@@ -3,7 +3,10 @@ h1 {
     padding-top: 2%;
 }
 
-body {
-    background: white url("images/background.jpg");
-    color: red;
-}
+html { 
+    background: url(images/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
