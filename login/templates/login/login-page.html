@@ -1,0 +1,81 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css' %}" />
+<script src="{% static 'login/js/login.js'  %}"></script>
+
+<header>
+  <ul id="nav">
+    <li><img src="{% static 'homepage/images/fields.png' %}" alt="Icon of Field" width="50" height="50"></li>
+    <li><a href="../home/"><strong>Home</strong></a></li>
+    <li><a href="../login/"><strong>Login</strong></a></li>
+    <li><a href="../create-account/"><strong>Create Account</strong></a></li>
+    <li><a href="../aboutus/"><strong>About Us</strong></a></li>
+    <li><a href="../contactus/"><strong>Contact Us</strong></a></li>
+  </ul>
+  <span class="loginHeader">
+    <h1> Login or Create your Account Here </h1>
+  </span>
+</header>
+
+<body onload="setTab('{{request.get_full_path}}')" >
+  <div class="tab">
+    <button id="loginButton" class="tablinks" onclick="openLogin(event, 'login')">Login</button>
+    <button id="createAccountButton" class="tablinks" onclick="openLogin(event, 'create-account')">Create Account</button>
+  </div>
+  <!-- Tab content -->
+  <div id="login" class="tabcontent">
+    <h3>Login</h3>
+    <hr />
+    <form>
+      <div>
+        <label class="form-label">Username or Email Address</label>
+        <input class="form-control" id="inputUsername" placeholder="Enter Username or Email">
+      </div>
+      <div>
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password">
+      </div>
+      <button id="loginSubmit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div id="create-account" class="tabcontent">
+    <h3>Create Account</h3>
+    <hr />
+    <form>
+      <div class="form-row">
+        <div>
+          <label class="form-label">First Name</label>
+          <input class="form-control" placeholder="Enter First Name">
+        </div>
+        <div>
+          <label class="form-label">Last Name</label>
+          <input id="lastName" class="form-control" placeholder="Enter Last Name">
+        </div>
+      </div>
+      <div>
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
+          placeholder="Enter email">
+      </div>
+      <div>
+        <label class="form-label">Username </label>
+        <input class="form-control" id="inputUsername" placeholder="Create username">
+      </div>
+      <div>
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Create Password">
+        <small id="emailHelp" class="form-text text-muted">Don't worry, I won't force you to make a super long and
+          secure password (would probably be a good idea though!)</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</body>
+
+<footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+      href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
+
+</html>

@@ -1,0 +1,131 @@
+  h1 {
+    color: greenyellow;
+    padding-top: 2%;
+}
+
+html,body { 
+    background: url(../images/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .loginHeader {
+      text-align: center;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 2px solid #ccc;
+    background-color: black;
+    width: 20%;
+    margin: auto;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    border: none;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    padding-left: 5%;
+    color: white;
+  }
+
+  #createAccountButton {
+    width: 60%;
+    padding-right: 5%;
+  }
+
+  #loginButton {
+    width: 40%;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 2px solid black;
+    background: whitesmoke;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    height: 60%;
+    position: relative;
+  }
+
+  footer {
+    color:white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+
+  form {
+    margin: auto;
+    width: 50%;
+  }
+
+  #lastName {
+    margin-left: 14%;
+  }
+
+  .form-label {
+    padding-top: 5%;
+  }
+
+  small {
+    padding: 1% 0% 2% 0%;
+  }
+
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  #loginSubmit {
+    margin-top: 3%;
+  }

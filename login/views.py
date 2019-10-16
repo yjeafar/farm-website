@@ -6,7 +6,7 @@ from .models import FarmOwner
 # Create your views here.
 def index(results):
     farm_owners = FarmOwner.name #change this once data is added to the database
-    template = loader.get_template('login/index.html') 
+    template = loader.get_template('login/login-page.html') 
     context = {
         'farm_owner': farm_owners
     }
