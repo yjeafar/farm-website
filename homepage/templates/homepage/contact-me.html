@@ -1,0 +1,44 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/css/home.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/css/contact-me.css' %}">
+
+<html>
+<header>
+    <ul id="nav">
+        <li><img src="{% static 'homepage/images/fields.png' %}" alt="Icon of Field" width="50" height="50"></li>
+        <li><a href="../"><strong>Home</strong></a></li>
+        <li><a href="../login/"><strong>Login</strong></a></li>
+        <li><a href="../create-account/"><strong>Create Account</strong></a></li>
+        <li><a href="../about-me/"><strong>About Me</strong></a></li>
+        <li><a href="../contact-me/"><strong>Contact Me</strong></a></li>
+    </ul>
+    {% if successful_submit %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> Message receieved. Thank you!
+    </div>
+    {% endif %}
+    <span class="homeHeader">
+        <h1>Contact Me</h1>
+    </span>
+</header>
+
+<body>
+    <div id="contactMe">
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+<footer>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</footer>
+
+</html>

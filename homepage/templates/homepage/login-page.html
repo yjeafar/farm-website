@@ -1,19 +1,20 @@
 {% load static %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css' %}" />
-<script src="{% static 'login/js/login.js'  %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/css/login.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/css/home.css' %}" />
+<script src="{% static 'homepage/js/login.js'  %}"></script>
 
 <header>
   <ul id="nav">
     <li><img src="{% static 'homepage/images/fields.png' %}" alt="Icon of Field" width="50" height="50"></li>
-    <li><a href="../home/"><strong>Home</strong></a></li>
+    <li><a href="../"><strong>Home</strong></a></li>
     <li><a href="../login/"><strong>Login</strong></a></li>
     <li><a href="../create-account/"><strong>Create Account</strong></a></li>
-    <li><a href="../aboutus/"><strong>About Us</strong></a></li>
-    <li><a href="../contactus/"><strong>Contact Us</strong></a></li>
+    <li><a href="../about-me/"><strong>About Me</strong></a></li>
+    <li><a href="../contact-me/"><strong>Contact Me</strong></a></li>
   </ul>
-  <span class="loginHeader">
+  <span class="homeHeader">
     <h1> Login or Create your Account Here </h1>
   </span>
 </header>

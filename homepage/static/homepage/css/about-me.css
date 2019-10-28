@@ -1,0 +1,14 @@
+#aboutMe {
+    margin: auto;
+    background-color: whitesmoke;
+    width: 50%;
+    font-size: 20px;
+    margin-top: 10%;
+    text-align: center;
+    padding: 0 1% 0 1%;
+    line-height: 50px;
+}
+
+#aboutme h1 {
+    color: indianred;
+}
