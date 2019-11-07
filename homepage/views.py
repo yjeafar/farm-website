@@ -5,7 +5,6 @@ from django.core.mail import send_mail, BadHeaderError
 from homepage.forms import ContactForm
 
 
-# Create your views here.
 def home(request):
     farm_owners = FarmOwner.name #change this once data is added to the database
     context = { 'farm_owner': farm_owners}
