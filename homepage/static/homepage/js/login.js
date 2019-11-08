@@ -36,3 +36,8 @@ function openLogin(evt, loginOrCreate) {
     document.getElementById(loginOrCreate).style.display = "block";
     evt.currentTarget.className += " active";
   } 
+
+function checkLogin() {
+    var userNameEmail = document.getElementById('loginUsername');
+    var password = document.getElementById('loginPassword');
+}

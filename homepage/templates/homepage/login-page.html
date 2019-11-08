@@ -8,11 +8,11 @@
 <header>
   <ul id="nav">
     <li><img src="{% static 'homepage/images/fields.png' %}" alt="Icon of Field" width="50" height="50"></li>
-    <li><a href="../"><strong>Home</strong></a></li>
-    <li><a href="../login/"><strong>Login</strong></a></li>
-    <li><a href="../create-account/"><strong>Create Account</strong></a></li>
-    <li><a href="../about-me/"><strong>About Me</strong></a></li>
-    <li><a href="../contact-me/"><strong>Contact Me</strong></a></li>
+    <li><a href="/"><strong>Home</strong></a></li>
+    <li><a href="/login/"><strong>Login</strong></a></li>
+    <li><a href="/create-account/"><strong>Create Account</strong></a></li>
+    <li><a href="/about-me/"><strong>About Me</strong></a></li>
+    <li><a href="/contact-me/"><strong>Contact Me</strong></a></li>
   </ul>
   <span class="homeHeader">
     <h1> Login or Create your Account Here </h1>
@@ -31,13 +31,13 @@
     <form>
       <div>
         <label class="form-label">Username or Email Address</label>
-        <input class="form-control" id="inputUsername" placeholder="Enter Username or Email">
+        <input class="form-control" id="loginUsername" placeholder="Enter Username or Email" required>
       </div>
       <div>
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password">
+        <input type="password" class="form-control" id="loginPassword" placeholder="Enter Password" required>
       </div>
-      <button id="loginSubmit" type="submit" class="btn btn-primary">Submit</button>
+      <button id="loginSubmit" type="submit" onClick="checkLogin()" class="btn btn-primary">Submit</button>
     </form>
   </div>
   <div id="create-account" class="tabcontent">
@@ -47,27 +47,27 @@
       <div class="form-row">
         <div>
           <label class="form-label">First Name</label>
-          <input class="form-control" placeholder="Enter First Name">
+          <input class="form-control" placeholder="Enter First Name" required>
         </div>
         <div>
           <label class="form-label">Last Name</label>
-          <input id="lastName" class="form-control" placeholder="Enter Last Name">
+          <input id="lastName" class="form-control" placeholder="Enter Last Name" required> 
         </div>
       </div>
       <div>
         <label class="form-label">Email address</label>
         <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
-          placeholder="Enter email">
+          placeholder="Enter email" required>
       </div>
       <div>
         <label class="form-label">Username </label>
-        <input class="form-control" id="inputUsername" placeholder="Create username">
+        <input class="form-control" id="inputUsername" placeholder="Create username" required>
       </div>
       <div>
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Create Password">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Create Password" required>
         <small id="emailHelp" class="form-text text-muted">Don't worry, I won't force you to make a super long and
-          secure password (would probably be a good idea though!)</small>
+          secure password (would probably be a good idea though)</small>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
