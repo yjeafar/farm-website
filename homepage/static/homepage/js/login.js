@@ -14,6 +14,10 @@ function setTab (url){
 
     document.getElementById(rawURL).style.display = "block";
 
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
 }
 
 
@@ -35,9 +39,5 @@ function openLogin(evt, loginOrCreate) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(loginOrCreate).style.display = "block";
     evt.currentTarget.className += " active";
-  } 
 
-function checkLogin() {
-    var userNameEmail = document.getElementById('loginUsername');
-    var password = document.getElementById('loginPassword');
-}
+  } 

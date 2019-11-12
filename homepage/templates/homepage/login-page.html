@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/login.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/home.css' %}" />
 <script src="{% static 'homepage/js/login.js'  %}"></script>
+<script src="{% static 'homepage/jquery/jquery-3.4.1.js'  %}"></script>
 
 <header>
   <ul id="nav">
@@ -19,59 +20,45 @@
   </span>
 </header>
 
-<body onload="setTab('{{request.get_full_path}}')" >
+<body onload="setTab('{{request.get_full_path}}')">
   <div class="tab">
     <button id="loginButton" class="tablinks" onclick="openLogin(event, 'login')">Login</button>
-    <button id="createAccountButton" class="tablinks" onclick="openLogin(event, 'create-account')">Create Account</button>
+    <button id="createAccountButton" class="tablinks" onclick="openLogin(event, 'create-account')">Create
+      Account</button>
   </div>
   <!-- Tab content -->
   <div id="login" class="tabcontent">
     <h3>Login</h3>
-    <hr />
-    <form>
-      <div>
-        <label class="form-label">Username or Email Address</label>
-        <input class="form-control" id="loginUsername" placeholder="Enter Username or Email" required>
+    <hr/>
+    {% if password_incorrect %}
+    <div class="alert alert-danger">
+        <strong>Incorrect username or password</strong> 
+    </br>Please try again.
+    </div>
+    {% endif %}
+    <form action="/login/" method="post">
+      <div class="col-sm-4">
+        {% csrf_token %}
+        {{loginForm}}
       </div>
-      <div>
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" id="loginPassword" placeholder="Enter Password" required>
+      <div class="form-actions">
+        <button id="loginSubmit" type="submit" class="btn btn-primary">Login</button>
       </div>
-      <button id="loginSubmit" type="submit" onClick="checkLogin()" class="btn btn-primary">Submit</button>
     </form>
   </div>
-  <div id="create-account" class="tabcontent">
-    <h3>Create Account</h3>
-    <hr />
-    <form>
-      <div class="form-row">
-        <div>
-          <label class="form-label">First Name</label>
-          <input class="form-control" placeholder="Enter First Name" required>
+    <div id="create-account" class="tabcontent">
+      <h3>Create Account</h3>
+      <hr />
+      <form action="/create-account/" method="post">
+        <div class="col-md-7">
+          {% csrf_token %}
+          {{createAccountForm}}
         </div>
-        <div>
-          <label class="form-label">Last Name</label>
-          <input id="lastName" class="form-control" placeholder="Enter Last Name" required> 
+        <div class="form-actions">
+          <button id="loginSubmit" type="submit" class="btn btn-primary">Create Account</button>
         </div>
-      </div>
-      <div>
-        <label class="form-label">Email address</label>
-        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
-          placeholder="Enter email" required>
-      </div>
-      <div>
-        <label class="form-label">Username </label>
-        <input class="form-control" id="inputUsername" placeholder="Create username" required>
-      </div>
-      <div>
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Create Password" required>
-        <small id="emailHelp" class="form-text text-muted">Don't worry, I won't force you to make a super long and
-          secure password (would probably be a good idea though)</small>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
+      </form>
+    </div>
 </body>
 
 <footer>

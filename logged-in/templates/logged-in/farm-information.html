@@ -1,16 +1,10 @@
+{% extends "logged-in/about.html" %}
+{% block content %}
 {% load static %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/css/login.css' %}" />
-
-<header>
-  <h1>Farm Information Page</h1>
-</header>
-
-<body >
-
-</body>
-
-
+<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/view-all-animals.css' %}" />
+<div>
+  Farm Information
+</div>
+{% endblock %}
 
 </html>

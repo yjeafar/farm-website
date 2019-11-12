@@ -52,11 +52,6 @@
     position: relative;
   }
 
-  form {
-    margin: auto;
-    width: 50%;
-  }
-
   #lastName {
     margin-left: 14%;
   }
@@ -78,4 +73,42 @@
 
   #loginSubmit {
     margin-top: 3%;
+  }
+
+  .formUser {
+    width: 100%;
+  }
+
+  .formPassword {
+    width: 100%;
+  }
+
+  .formUserName {
+   width: 100%;
+  }
+
+  .formName {
+    width: 100%;
+  }
+
+  .formEmail {
+    width: 100%;
+  }
+
+  .col-sm-4 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .col-md-7 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  label {
+    padding-top: 3%;
+  }
+
+  .errorList {
+    background-color: whitesmoke;
   }
