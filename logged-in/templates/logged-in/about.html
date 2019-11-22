@@ -1,7 +1,9 @@
 {% load static %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="{% static 'homepage/css/login.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/about.css' %}" />
+<script src="{% static 'logged-in/js/about.js'  %}"></script>
+<script src="{% static 'homepage/jquery/jquery-3.4.1.js'  %}"></script>
 
 <html>
 <header>
@@ -10,12 +12,12 @@
         <li><a href="/logged-in"><strong>View All Animals</strong></a></li>
         <li><a href="/logged-in/add-animal"><strong>Add Animal</strong></a></li>
         <li><a href="/logged-in/edit-animal"><strong>Edit Animal</strong></a></li>
-        <li><a href="/logged-in/view-animal"><strong>View Animal</strong></a></li>
-        <li><a href="/logged-in/farm-information"><strong>Edit Farm Information</strong></a></li>
+        <li><a href="/logged-in/farm-information"><strong>Farm Information</strong></a></li>
         <li><a href="/"><strong>Logout</strong></a></li>
 </header>
 <body>
-        {% block content %} {% endblock %}
+        {% block content %} 
+        {% endblock %}
 </body>
 <footer>
     <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a

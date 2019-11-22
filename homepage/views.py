@@ -1,15 +1,14 @@
-import pdb
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+from django.core.cache import cache
 from homepage.models import FarmOwner
 from homepage.forms import ContactForm, LoginForm, CreateAccountForm
 
 
 
 def home(request):
-    farm_owners = FarmOwner.name #change this once data is added to the database
-    #context = { 'all_objects': all_objects}
+    cache.clear()
     query_results = FarmOwner.objects.all()
     return render(request, 'homepage/home.html', {'query_results': query_results})
 
@@ -22,8 +21,9 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             try:
-                user_value = str(FarmOwner.objects.get(username__iexact=form.cleaned_data['username'])) # Returns string with user and pass
-                if form.cleaned_data['password'] in user_value: # If the password is inside of the string
+                user_value = FarmOwner.objects.get(username=form.cleaned_data['username']) # Get db row with username in it
+                if form.cleaned_data['password'] == user_value.password: # If the password is in the row, logged-in
+                    cache.add('logged_in', user_value.userId)
                     return redirect('/logged-in/')
                 else:
                     form = LoginForm()
@@ -32,7 +32,8 @@ def login(request):
                 form = LoginForm()
                 password_incorrect = True
 
-    return render(request, 'homepage/login-page.html', {'loginForm': form, 'createAccountForm': create_account_form,
+    return render(request, 'homepage/login-page.html', {'loginForm': form,
+                                                        'createAccountForm': create_account_form,
                                                         'password_incorrect': password_incorrect})
 
 def createAccount(request):
