@@ -1,0 +1,10 @@
+.w3-container {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.w3-container .container {
+    font-size: 18px;
+    box-shadow: 2px 2px 2px 2px black;
+    padding: 5px 5px 10px 20px;
+}

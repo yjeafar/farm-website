@@ -1,0 +1,61 @@
+.addAnimal ul {
+    background-color: white;
+}
+.addAnimal .row {
+    padding: 7px 0 7px 0;
+}
+
+.addAnimal {
+    text-align: center;
+}
+
+.addAnimal .form-control {
+    width: 250px;
+    float: right;
+}
+
+#farmSelectLabel {
+    float: left;
+    font-weight: bolder;
+}
+
+.addAnimal .col-sm-4 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .animalWeightForm, .animalAgeForm, .animalNameForm, .animalTypeForm, .animalColorForm {
+    height: 35px;
+    float: right;
+    width: 250px;
+  }
+
+.addAnimal label {
+    width: 120px;
+}
+
+.animalSexForm label {
+    width: 80px;
+    height: 100%;
+}
+
+.animalSexForm {
+    float: right;
+}
+
+#animalSubmit {
+    margin-top: 2%;
+    float: right;
+}
+
+.addAnimal .col-sm-6 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+  }
+
+  #id_thumb {
+      float:right;
+      width: 250px;
+  }
+

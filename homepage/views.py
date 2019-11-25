@@ -41,7 +41,7 @@ def createAccount(request):
     if request.method == 'POST':
         form = CreateAccountForm(request.POST)
         if form.is_valid():
-            new_form = form.save()
+            form.save()
             response = redirect('/logged-in/')
             return response
     else:

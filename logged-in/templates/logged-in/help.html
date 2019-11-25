@@ -1,0 +1,35 @@
+{% extends "logged-in/about.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/help-page.css' %}" />
+<div class="w3-container">
+    <h1 id=helpPageTitle>
+        Help Page
+    </h1>
+    <div class="container">
+        <p>
+            This application is about being able to have specific animals on a farm. The website allows the user to 
+            add animals to a specific farm, and add as many farms as the user would like, however the names must be unique. 
+            There is a user id assigned to each person who creates an account and it is stored in the cache table which is
+            provided through Django, so each farm and the animals on the farms are stored owned by the user that is logged
+            in and adds them.
+        </p>
+        <p>
+            The first thing a user should do is add a farm, as they cannot add an animal unless they have a place to live.
+            Next, the user could go to add animal and select the farm that they want to add the animal to. The user can
+            add characteristics that are unique to each animal, such as name, color, sex, animal type, age, weight, and a
+            picture of the animal. The animal is then assigned a farm id which is the farm that they live at, which allows 
+            for easy filtering whenever the user wants to view all animals. On the view all page, the user can see a 
+            paginator where they can navigate easily to see all of the animals. Additioinally, the user may edit a specific 
+            animal to change one of the characteristics, move the animal to a different farm, or delete the animal from the
+            database.
+        </p>
+        <p>
+            If you encounter any issues, have any recommendations, feedback, questioms, or just want to get in touch,
+            please don't hesitate to <a href= ../../contact-me>contact me!</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+</html>

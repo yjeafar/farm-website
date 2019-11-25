@@ -24,21 +24,17 @@ class FarmLocation(models.Model):
     farmState = models.CharField(max_length=200)
     timeAdded = models.DateTimeField(auto_now_add=True)
 
-class Animal(models.Model):
-    ownerId = models.ForeignKey(FarmOwner, on_delete=models.CASCADE)
-    animalId = models.CharField(primary_key=True, max_length=100, blank=True, default=uuid.uuid4)
-    animalName = models.CharField(max_length=200)
-    characteristic = models.IntegerField(default=0)
-    farmId = models.ForeignKey(FarmLocation, on_delete=models.CASCADE)
-    thumb = models.ImageField(default='default.png', blank=True)
-    timeAdded = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return "{0}".format(self.farmName)
 
-class AnimalCharacteristics(models.Model):
-    characteristicNum = models.IntegerField(default=0)
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+class Animal(models.Model):
+    animalId = models.CharField(primary_key=True, max_length=100, blank=True, default=uuid.uuid4)
+    farmId = models.ForeignKey(FarmLocation, on_delete=models.CASCADE)
+    animalName = models.CharField(max_length=200)
     animalType = models.CharField(max_length=100)
     animalColor = models.CharField(max_length=20)
-    animalSex = models.CharField(max_length=1)
+    animalSex = models.CharField(max_length=10)
     animalAge = models.CharField(max_length=5)
     animalWeight = models.CharField(max_length=10)
+    thumb = models.ImageField(default='homepage/static/homepage/images/no-image-available.png', blank=True)
     timeAdded = models.DateTimeField(auto_now_add=True)

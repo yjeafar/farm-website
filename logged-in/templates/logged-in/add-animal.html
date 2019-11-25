@@ -1,9 +1,42 @@
 {% extends "logged-in/about.html" %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/view-all-animals.css' %}" />
-<div>
-  Add Animal
+<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/add-animal.css' %}" />
+<div class='addAnimal'>
+  {% if form_success %}
+  <div class="alert alert-success">
+    <strong>Success!</strong> Animal Added to Farm.
+  </div>
+  {% endif %}
+  <h1>
+    Add Animal
+  </h1>
+  {% if farm_location %}
+  <form action="add-animal" method="POST" enctype="multipart/form-data">
+    <div class="col-sm-4">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="row">
+        <b>{{field.label_tag}} </b>
+        <div class="col-sm-9">
+          {{ field }}
+        </div>
+      </div>
+      {% endfor %}
+      <div class="form-actions">
+        <button id="animalSubmit" type="submit" class="btn btn-primary">Add Animal</button>
+      </div>
+    </div>
+  </form>
+  {% else %}
+  <div class=col-sm-6>
+    <p>
+      Looks like you didn't add a farm yet! No worries, head over to the
+      <a href="/logged-in/farm-information">add farm page</a> to add a farm first, then come back
+      to add animals.
+    </p>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
 

@@ -115,7 +115,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+REPOSITORY_ROOT = os.path.dirname(BASE_DIR)
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(REPOSITORY_ROOT, 'static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
 
 ALLOWED_HOSTS = ['192.168.1.142',
                  'localhost']
