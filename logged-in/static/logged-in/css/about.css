@@ -22,11 +22,19 @@ ul {
     background-color: #111;
   }
 
-  footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+
+  html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    flex: 1 0 auto;
+  }
+  .footer {
+    flex-shrink: 0;
     padding: 1rem;
     background-color: #111;
     color: white;

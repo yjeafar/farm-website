@@ -1,11 +1,17 @@
 {% load static %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/about.css' %}" />
-<script src="{% static 'logged-in/js/about.js'  %}"></script>
-<script src="{% static 'homepage/jquery/jquery-3.4.1.js'  %}"></script>
-
 <html>
+
+</html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/about.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'logged-in/js/about.js'  %}"></script>
+    <script src="{% static 'homepage/jquery/jquery-3.4.1.js'  %}"></script>
+</head>
+
 <header>
     <ul id="nav">
         <li><img src="{% static 'homepage/images/fields.png' %}" alt="Icon of Field" width="50" height="50"></li>
@@ -15,14 +21,16 @@
         <li><a href="/logged-in/help"><strong>Help Page</strong></a></li>
         <li><a href="/"><strong>Logout</strong></a></li>
 </header>
+
 <body>
-        {% block content %} 
+    <div class="content">
+        {% block content %}
         {% endblock %}
+    </div>
 </body>
-<footer>
+<footer class="footer">
     <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
             href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </footer>
-
 
 </html>

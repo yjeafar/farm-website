@@ -1,9 +1,8 @@
 import uuid
 from django.db import models
 from django.core.validators import MinLengthValidator
-
-
-# Create your models here.
+from django.core.files.storage import FileSystemStorage
+from sorl.thumbnail import get_thumbnail
 
 class FarmOwner(models.Model):
     userId = models.CharField(primary_key=True, max_length=100, blank=True, default=uuid.uuid4)
@@ -35,6 +34,10 @@ class Animal(models.Model):
     animalColor = models.CharField(max_length=20)
     animalSex = models.CharField(max_length=10)
     animalAge = models.CharField(max_length=5)
-    animalWeight = models.CharField(max_length=10)
-    thumb = models.ImageField(default='homepage/static/homepage/images/no-image-available.png', blank=True)
+    animalWeight = models.CharField(max_length=10) 
+    thumb = models.ImageField(default='media/media/no-image-available.jpg', upload_to='media')
     timeAdded = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        self.thumb = get_thumbnail(self.thumb, '400x300', quality=99).url
+        super(Animal, self).save(*args, **kwargs)

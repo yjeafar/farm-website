@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.core.cache import cache
+from django.core.paginator import Paginator
 from homepage.models import FarmOwner, FarmLocation, Animal
 from homepage.forms import AddFarmForm, AddAnimalForm
 from django.forms import ModelChoiceField
@@ -11,6 +13,7 @@ def addAnimal(request):
     if not checkLoggedIn():
         return redirect('/login')
     else:
+       # Animal.objects.all().delete()
         farm_location = FarmLocation.objects.filter(farmOwner_id=cache.get('logged_in'))
         if request.method == 'POST':
             form = AddAnimalForm(request.POST, request.FILES)
@@ -25,13 +28,15 @@ def addAnimal(request):
                                                              'form_success': form_save_success,
                                                              'farm_location': farm_location})
 
-def editAnimal(request):
+def editAnimal(request, animal_id):
     if not checkLoggedIn():
         return redirect('/login')
     else:
-        farm_owners = FarmOwner.name
-        context = {'farm_owner': farm_owners}
-        return render(request, 'logged-in/edit-animal.html', context)
+        try:
+            animal = Animal.objects.get(pk=animal_id)
+        except:
+            raise Http404("Animal does not exist")
+        return render(request, 'logged-in/edit-animal.html')
 
 def viewAnimal(request):
     if not checkLoggedIn():
@@ -47,7 +52,14 @@ def viewAllAnimals(request):
     else:
         user_id = cache.get('logged_in')
         logged_in_user = FarmOwner.objects.get(userId=user_id)
-        return render(request, 'logged-in/view-all-animals.html', {'userName': logged_in_user.name})
+        farms = FarmLocation.objects.filter(farmOwner=logged_in_user)
+        animal_list = Animal.objects.filter(farmId__in=farms)
+        paginator = Paginator(animal_list, 4)
+        page = request.GET.get('page')
+        animals = paginator.get_page(page)
+        print(animals)
+        return render(request, 'logged-in/view-all-animals.html', {'userName': logged_in_user.name,
+                                                                   'animals': animals})
 
 def farmInformation(request):
     form_save_success = False
