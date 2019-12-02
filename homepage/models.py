@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.core.validators import MinLengthValidator
 from django.core.files.storage import FileSystemStorage
+from django.urls import reverse
 from sorl.thumbnail import get_thumbnail
 
 class FarmOwner(models.Model):
@@ -35,9 +36,10 @@ class Animal(models.Model):
     animalSex = models.CharField(max_length=10)
     animalAge = models.CharField(max_length=5)
     animalWeight = models.CharField(max_length=10) 
-    thumb = models.ImageField(default='media/media/no-image-available.jpg', upload_to='media')
+    thumb = models.ImageField(default='media/media/no-image-available.jpg', upload_to='media/')
     timeAdded = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
+        super(Animal, self).save(*args, **kwargs)
         self.thumb = get_thumbnail(self.thumb, '400x300', quality=99).url
         super(Animal, self).save(*args, **kwargs)

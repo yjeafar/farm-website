@@ -29,3 +29,7 @@
 #delete {
   font-size: 30px;
 }
+
+.messages {
+  text-align: center;
+}

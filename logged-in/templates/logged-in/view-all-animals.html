@@ -4,6 +4,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/view-all-animals.css' %}" />
 <div id="viewAllAnimals">
   <div id="welcomeHeader">
+    {% if messages %}
+    <div class="alert alert-success">
+      {% for message in messages %}
+      <span {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
     <h1> Hello {{userName}}! </h1>
     <h3>Here are all of your animals from all of your farms:</h3>
   </div>
@@ -12,8 +19,8 @@
     Looks like you don't have any animals yet. <a href="add-animal">Click here</a> to add some.
   </div>
   {% endif %}
-  {% for animal in animals %}
 
+  {% for animal in animals %}
   <div class="row">
     <div class="sm-col-3">
       <img src="{{ animal.thumb}}" />
@@ -33,17 +40,17 @@
       <br />
       Weight: {{animal.animalWeight}} lbs
       <br />
-      <a href="edit-animal/{{animal.animalId}}">
-      <button class="btn btn-primary" title="Edit animal"><i id="edit" class="fa fa-edit" ></i>
-      </button></a>
-      <button class="btn btn-danger" title="Delete animal"><i id="delete" class="fa fa-trash" ></i></button>
+      <a href="{{animal.animalId}}/edit">
+        <button class="btn btn-primary" title="Edit animal"><i id="edit" class="fa fa-edit"></i>
+        </button></a>
+      <button class="btn btn-danger" title="Delete animal"><i id="delete" class="fa fa-trash"></i></button>
     </div>
-      
+
   </div>
-  
+
   <hr>
   {% endfor %}
- 
+
   {% if animals.has_other_pages %}
   <ul class="pagination">
     {% if animals.has_previous %}

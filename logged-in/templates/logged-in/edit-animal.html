@@ -1,9 +1,27 @@
 {% extends "logged-in/about.html" %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/view-all-animals.css' %}" />
-<div>
-  Edit Animal
+<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/add-animal.css' %}" />
+<div class="addAnimal">
+  <h1>
+    Edit Animal
+  </h1>
+  <form method="post">
+    <div class="col-sm-4">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="row">
+        <b>{{field.label_tag}} </b>
+        <div class="col-sm-9">
+          {{ field }}
+        </div>
+      </div>
+      {% endfor %}
+      <div class="form-actions">
+        <button id="animalSubmit" class="btn btn-primary" type="submit" value="Update">Update</button>
+      </div>
+    </div>
+  </form>
 </div>
 {% endblock %}
 

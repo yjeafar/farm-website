@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.core.cache import cache
 from django.core.paginator import Paginator
+from django.forms import ModelChoiceField
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
 from homepage.models import FarmOwner, FarmLocation, Animal
 from homepage.forms import AddFarmForm, AddAnimalForm
-from django.forms import ModelChoiceField
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 
 
 def addAnimal(request):
@@ -28,15 +32,23 @@ def addAnimal(request):
                                                              'form_success': form_save_success,
                                                              'farm_location': farm_location})
 
-def editAnimal(request, animal_id):
-    if not checkLoggedIn():
-        return redirect('/login')
-    else:
-        try:
-            animal = Animal.objects.get(pk=animal_id)
-        except:
-            raise Http404("Animal does not exist")
-        return render(request, 'logged-in/edit-animal.html')
+class UpdateAnimal(SuccessMessageMixin, UpdateView):
+    model = Animal
+    form_class = AddAnimalForm
+    template_name_suffix = '_update_form'
+    template_name = 'logged-in/edit-animal.html'
+    slug_field = 'animalId'
+    slug_url_kwarg = 'animalId'
+    pk_url_kwarg = 'animal_pk'
+    context_object_name = 'post'
+    success_message = 'Animal Updated Successfully!'
+    success_url = '/logged-in/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+        
+          
 
 def viewAnimal(request):
     if not checkLoggedIn():
@@ -57,7 +69,6 @@ def viewAllAnimals(request):
         paginator = Paginator(animal_list, 4)
         page = request.GET.get('page')
         animals = paginator.get_page(page)
-        print(animals)
         return render(request, 'logged-in/view-all-animals.html', {'userName': logged_in_user.name,
                                                                    'animals': animals})
 
@@ -90,6 +101,9 @@ def checkLoggedIn():
     if logged_in is None:
         return False
     return True
+
+
+
 
 class MyModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
