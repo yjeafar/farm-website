@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponseRedirect
 from django.core.cache import cache
 from django.core.paginator import Paginator
@@ -45,10 +45,18 @@ class UpdateAnimal(SuccessMessageMixin, UpdateView):
     success_url = '/logged-in/'
 
     def form_valid(self, form):
+        print(form.cleaned_data['thumb'])
         form.save()
         return super().form_valid(form)
-        
-          
+
+
+def deleteAnimal(request,animal_Id):
+    obj = get_object_or_404(Animal, animalId=animal_Id)
+    if (request.method) == 'POST':
+        obj.delete()
+        return redirect('/logged-in/')
+    context = {"animal" : obj}
+    return render(request, 'logged-in/delete-animal.html', context)
 
 def viewAnimal(request):
     if not checkLoggedIn():

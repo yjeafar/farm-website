@@ -1,6 +1,8 @@
 from django import forms
 from homepage.models import FarmOwner, FarmLocation, Animal
 from django.core.cache import cache
+from imagekit.forms import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 STATES = [('', 'Select State'), ('AL', 'AL'), ('AK', 'AK'), ('AZ', 'AZ'), ('AR', 'AR'), ('CA', 'CA'),
           ('CO', 'CO'), ('CT', 'CT'), ('DC', 'DC'), ('DE', 'DE'), ('FL', 'FL'), ('GA', 'GA'), ('HI', 'HI'),
@@ -102,11 +104,15 @@ class AddAnimalForm(forms.ModelForm):
                                            label="Name of Farm",
                                            widget=forms.Select(attrs={'class':'form-control'}))
 
-
     class Meta:
+        thumb = ProcessedImageField(spec_id='homepage:Animal:avatar_thumbnail',
+                                           processors=[ResizeToFill(100, 50)],
+                                           format='JPEG',
+                                           options={'quality': 60})
         model = Animal
         fields = ('farmId', 'animalName', 'animalType', 'animalColor', 'animalAge', 'animalSex',
                   'animalWeight', 'thumb')
+
         labels = {
             'animalName': 'Animal Name',
             'animalType': 'Animal Type',

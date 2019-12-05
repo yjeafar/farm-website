@@ -1,0 +1,13 @@
+{% extends 'logged-in/about.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'logged-in/css/delete-animal.css' %}" />
+<form action= '' method='POST'> {% csrf_token %}
+    <h2 id="deleteHeader">Are you sure you want to delete the animal "{{ animal.animalName }}" ?</h2>
+    <div class="row"><button class="btn btn-danger" id ="deleteButton"input type = 'submit' value='Yes'>Delete</button>
+        <button class="btn btn-primary" id="cancelButton"><a href='../'>Cancel</a></button></div>
+</form> 
+
+
+{% endblock %}

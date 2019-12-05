@@ -12,18 +12,20 @@
     </div>
     {% endif %}
     <h1> Hello {{userName}}! </h1>
+
+    {% if not animals %}
+    <div id="errorMessage">
+      Looks like you don't have any animals yet. <a href="add-animal">Click here</a> to add some.
+    </div>
+    {% else %}
     <h3>Here are all of your animals from all of your farms:</h3>
+    {% endif %}
   </div>
-  {% if not animals %}
-  <div id="errorMessage">
-    Looks like you don't have any animals yet. <a href="add-animal">Click here</a> to add some.
-  </div>
-  {% endif %}
 
   {% for animal in animals %}
   <div class="row">
     <div class="sm-col-3">
-      <img src="{{ animal.thumb}}" />
+      <img src="{{ animal.thumb.url }}" />
     </div>
     <div class="sm-col-5">
       Location Name: {{animal.farmId}}
@@ -41,9 +43,11 @@
       Weight: {{animal.animalWeight}} lbs
       <br />
       <a href="{{animal.animalId}}/edit">
-        <button class="btn btn-primary" title="Edit animal"><i id="edit" class="fa fa-edit"></i>
-        </button></a>
-      <button class="btn btn-danger" title="Delete animal"><i id="delete" class="fa fa-trash"></i></button>
+        <button class="btn btn-primary" title="Edit animal"><i id="edit" class="fa fa-edit"></i></button>
+      </a>
+      <a href="{{animal.animalId}}/delete">
+        <button class="btn btn-danger" title="Delete animal"><i id="delete" class="fa fa-trash"></i></button>
+      </a>
     </div>
 
   </div>
